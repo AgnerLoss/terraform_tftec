@@ -5,10 +5,7 @@ on:
       - main
 jobs:
   terraform:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: /terraform_tftec
+    runs-on: ubuntu-latest    
     steps:
       - name: Cache
         uses: actions/cache@v3.3.2
@@ -17,7 +14,8 @@ jobs:
       - name: Iniciando Terraform
         run: terraform init 
       - name: Planejando Terraform
-        run: terraform plan
+        run: terraform plan  
+        working-directory: /terraform_tftec
       - name: Aplicando Terraform
         run: terraform apply -auto-approve
         env: 
