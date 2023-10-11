@@ -18,9 +18,8 @@ jobs:
       - name: Aplicando Terraform
         run: terraform apply -auto-approve
         env: 
-          client_id: ${{secrets.client_id}}
-          client_secret: ${{secrets.client_secret}}
-          subscription_id: ${{secrets.subscription_id}}
-          tenant_id: ${{secrets.tenant_id}}
+          client_id: ${{secrets.CLIENT_ID}}          
+          subscription_id: ${{secrets.SUBS_ID}}
+          tenant_id: ${{secrets.TENANTID}}
       - name: Destruindo Terraform
         run: terraform destroy -auto-approve
