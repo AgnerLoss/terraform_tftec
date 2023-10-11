@@ -1,0 +1,26 @@
+name: Projeto Terraform Azure
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache
+        uses: actions/cache@v3.3.2
+      - name: HashiCorp - Setup Terraform
+        uses: hashicorp/setup-terraform@v2.0.3
+      - name: Iniciando Terraform
+        run: terraform init 
+      - name: Planejando Terraform
+        run: terraform plan
+      - name: Aplicando Terraform
+        run: terraform apply -auto-approve
+        env: 
+          client_id: ${{secrets.client_id}}
+          client_secret: ${{secrets.client_secret}}
+          subscription_id: ${{secrets.subscription_id}}
+          tenant_id: ${{secrets.tenant_id}}
+      - name: Destruindo Terraform
+        run: terraform destroy -auto-approve
