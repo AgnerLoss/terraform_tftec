@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./github
+        working-directory: ./terraform_tftec
     steps:
       - name: Cache
         uses: actions/cache@v3.3.2
