@@ -3,6 +3,15 @@ on:
   push:
     branches:
       - main
+permissions:
+  id-token: write
+  contents: read
+
+env: 
+  client_id: "${{ secrets.CLIENT_ID }}"
+  subscription_id: "${{ secrets.SUBS_ID }}"
+  tenant_id: "${{ secrets.TENANTID }}" 
+
 jobs:
   terraform:
     runs-on: ubuntu-latest    
@@ -16,10 +25,6 @@ jobs:
       - name: Planejando Terraform
         run: terraform plan        
       - name: Aplicando Terraform
-        run: terraform apply -auto-approve
-        env: 
-          client_id: ${{secrets.CLIENT_ID}}          
-          subscription_id: ${{secrets.SUBS_ID}}
-          tenant_id: ${{secrets.TENANTID}}
+        run: terraform apply -auto-approve        
       - name: Destruindo Terraform
         run: terraform destroy -auto-approve
