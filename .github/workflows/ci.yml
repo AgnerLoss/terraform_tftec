@@ -25,11 +25,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2.0.3
 
       - name: Iniciando Terraform
-        run: terraform init 
-
-      - name: Planejando Terraform
-        id: plan
-        run: terraform plan      
+        run: terraform init          
 
       - name: Aplicando Terraform
         run: terraform apply -auto-approve   
