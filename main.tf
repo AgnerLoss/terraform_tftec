@@ -7,7 +7,7 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg-tftec" {
   name     = "rg-tftec-from-terraform"
   location = "West Europe"
-  managed_by = "f88cb722-3ac9-490f-a0f6-9e9f3301bd9a"
+  managed_by = "f8716e71-7ff3-499d-864f-181e0ac2eb95"
 }
 
 # Create Virtual Network (VNet)
