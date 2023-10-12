@@ -6,17 +6,7 @@ on:
 
 jobs:
   terraform:
-    runs-on: ubuntu-latest 
-    env: 
-      client_id: "${{ secrets.CLIENT_ID }}"
-      client_secret: "${{ secrets.CLIENT_SECRET}}"
-      subscription_id: "${{ secrets.SUBS_ID }}"
-      tenant_id: "${{ secrets.TENANTID }}" 
-
-    defaults:
-      run:
-        shell: bash
-        working-directory: /home/agner/Documentos/Mentoria_cloud/terraform_tftec/
+    runs-on: ubuntu-latest     
 
     steps:
       - name: Cache
@@ -34,6 +24,11 @@ jobs:
 
       - name: Aplicando Terraform
         run: terraform apply -auto-approve   
+        env: 
+          client_id: "${{ secrets.CLIENT_ID }}"
+          client_secret: "${{ secrets.CLIENT_SECRET}}"
+          subscription_id: "${{ secrets.SUBS_ID }}"
+          tenant_id: "${{ secrets.TENANTID }}"     
 
       - name: Destruindo Terraform
         run: terraform destroy -auto-approve
