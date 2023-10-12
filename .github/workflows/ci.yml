@@ -9,6 +9,7 @@ permissions:
 
 env: 
   client_id: "${{ secrets.CLIENT_ID }}"
+  client_secret: "${{ secrets.CLIENT_SECRET}}"
   subscription_id: "${{ secrets.SUBS_ID }}"
   tenant_id: "${{ secrets.TENANTID }}" 
 
