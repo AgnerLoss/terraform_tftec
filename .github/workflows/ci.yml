@@ -15,8 +15,7 @@ jobs:
 
     defaults:
       run:
-        shell: bash
-        working-directory: ./terraform
+        shell: bash       
 
     steps:
       - name: Cache
