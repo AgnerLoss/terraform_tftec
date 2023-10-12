@@ -3,33 +3,37 @@ on:
   push:
     branches:
       - main
-permissions:
-  id-token: write
-  contents: read
-
-env: 
-  client_id: "${{ secrets.CLIENT_ID }}"
-  client_secret: "${{ secrets.CLIENT_SECRET}}"
-  subscription_id: "${{ secrets.SUBS_ID }}"
-  tenant_id: "${{ secrets.TENANTID }}" 
 
 jobs:
   terraform:
-    runs-on: ubuntu-latest   
+    runs-on: ubuntu-latest 
+    env: 
+      client_id: "${{ secrets.CLIENT_ID }}"
+      client_secret: "${{ secrets.CLIENT_SECRET}}"
+      subscription_id: "${{ secrets.SUBS_ID }}"
+      tenant_id: "${{ secrets.TENANTID }}" 
+
     defaults:
       run:
-        working-directory: .
+        shell: bash
+        working-directory: ./terraform
+
     steps:
       - name: Cache
         uses: actions/cache@v3.3.2
+
       - name: HashiCorp - Setup Terraform
-        uses: hashicorp/setup-terraform@v2.0.3
+        uses: hashicorp/setup-terraform@v3.74.0
+
       - name: Iniciando Terraform
         run: terraform init 
+
       - name: Planejando Terraform
-        shell: bash
-        run: terraform plan          
+        id: plan
+        run: terraform plan      
+
       - name: Aplicando Terraform
-        run: terraform apply -auto-approve        
+        run: terraform apply -auto-approve   
+
       - name: Destruindo Terraform
         run: terraform destroy -auto-approve
