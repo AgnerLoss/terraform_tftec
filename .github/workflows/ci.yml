@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v3.3.2
 
       - name: HashiCorp - Setup Terraform
-        uses: hashicorp/setup-terraform@v3.74.0
+        uses: hashicorp/setup-terraform@v2.0.3
 
       - name: Iniciando Terraform
         run: terraform init 
