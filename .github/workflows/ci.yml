@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./terraform_tftec
+        working-directory: terraform_tftec
 
     steps:
       - name: Cache
