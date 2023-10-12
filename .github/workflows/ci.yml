@@ -26,7 +26,8 @@ jobs:
       - name: Iniciando Terraform
         run: terraform init 
       - name: Planejando Terraform
-        run: terraform plan        
+        shell: bash
+        run: terraform plan          
       - name: Aplicando Terraform
         run: terraform apply -auto-approve        
       - name: Destruindo Terraform
