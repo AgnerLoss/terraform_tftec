@@ -37,9 +37,6 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
-    - name: Az Login    
-      run: az login
-
     # Generates an execution plan for Terraform
     - name: Terraform Plan      
       run: terraform plan -input=false
