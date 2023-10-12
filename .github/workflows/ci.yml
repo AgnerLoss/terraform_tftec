@@ -15,7 +15,8 @@ jobs:
 
     defaults:
       run:
-        shell: bash       
+        shell: bash
+        working-directory: ./terraform_tftec
 
     steps:
       - name: Cache
@@ -25,7 +26,11 @@ jobs:
         uses: hashicorp/setup-terraform@v2.0.3
 
       - name: Iniciando Terraform
-        run: terraform init          
+        run: terraform init 
+
+      - name: Planejando Terraform
+        id: plan
+        run: terraform plan      
 
       - name: Aplicando Terraform
         run: terraform apply -auto-approve   
